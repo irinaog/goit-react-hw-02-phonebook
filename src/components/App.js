@@ -1,31 +1,34 @@
 import React, { Component } from "react";
 import shortid from 'shortid';
 
-// import {FormAddContacts} from './FormAddContacts/formAddContscts'
+import { FormAddContacts } from './FormAddContacts/formAddContscts';
+import { ContactsList } from "./ContactsList/contactsList";
+import { FilterContacts } from "./FilterContacts/filterContacts";
 
 
 export class App extends Component {
   contactsId = shortid.generate();
   state = {
-    contacts: [{ name: 'Diana', number: '0254821', id: this.contactsId, },
-    {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-    {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-    {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},],
-    name: ' ',
-    number: ' ',
+    contacts: [
+      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    // name: ' ',
+    // number: ' ',
     filter: ' ',
   };
 
 
-  hendleChange = e => {
-    const { name, value } = e.currentTarget;
-    console.log(e.currentTarget.value);
-    this.setState({
-      [name]: value
-    })
+  // hendleChange = e => {
+  //   const { name, value } = e.currentTarget;
+  //   console.log(e.currentTarget.value);
+  //   this.setState({
+  //     [name]: value
+  //   })
     
-  };
+  // };
 
   // hendleNameChange = event => {
   //   console.log(event.currentTarget.value);
@@ -40,21 +43,37 @@ export class App extends Component {
   //   })
   // };
 
-  hendleSubmit = e => {
-    e.preventDefault();
-    this.state.contacts.push({ name: this.state.name, number:this.state.number, id: shortid.generate() });
+  // hendleSubmit = e => {
+  //   e.preventDefault();
+  //   this.state.contacts.push({ name: this.state.name, number:this.state.number, id: shortid.generate() });
 
-    console.log(this.state.contacts)
-    this.reset();
-  };
+  //   console.log(this.state.contacts)
+  //   this.reset();
+  // };
 
-  // formSubmitHandler = data => {
-  //   console.log(data)
-  // }
 
-  reset = () => {
-    this.setState({ name: ' ', number: ' ' })
-  };
+  formSubmitHandler = data => {
+    console.log(data);
+    this.state.contacts.map(contact =>( 
+      contact.name !== data.name ? this.state.contacts.push({ name: data.name, number: data.number, id: shortid.generate() }) :
+        alert(data.name + 'is already in contacts')
+    ))
+      //   if (data.name === contact.name){}
+      //   // data.name === contact.name ? alert('is already in contact')
+      //   // :this.state.contacts.push({ name: data.name, number: data.number, id: shortid.generate() })
+      // ))})); 
+      // contacts: prevState.contacts.map(contact => {
+      //   if (data.name !== contact.name) {
+      //     return this.state.contacts.push({ name: data.name, number: data.number, id: shortid.generate() })
+      //   }
+      //    alert('is already in contacts')
+      // })
+    
+  }
+
+  // reset = () => {
+  //   this.setState({ name: ' ', number: ' ' })
+  // };
 
 
   changeFilter = e => {
@@ -70,11 +89,12 @@ export class App extends Component {
   };
   
   render() {
-    const visibleContact = this.getContact();
+    // const visibleContact = this.getContact();
     return (
       <>
-        {/* <FormAddContacts onSubmit={this.formSubmitHandler} /> */}
-        <form onSubmit={this.hendleSubmit}> 
+         <h1>Phonebook</h1>
+        <FormAddContacts onSubmit={this.formSubmitHandler} />
+        {/* <form onSubmit={this.hendleSubmit}> 
           <label>
             Name
             <input
@@ -101,9 +121,12 @@ export class App extends Component {
           </label>
           
           <button type="submit">Add contact</button>
-        </form> 
-
-        <h2>Contacts</h2>
+        </form>  */}
+        <FilterContacts
+          contact={this.state.filter}
+          filter={this.changeFilter}
+        />
+        {/* <h2>Contacts</h2>
         <label> Find contacts by name
           <input
             type="text"
@@ -111,12 +134,14 @@ export class App extends Component {
             value={this.state.filter}
             onChange={this.changeFilter}  
           ></input>
-        </label>
-        <ul>
-          {visibleContact.map(({ name, number }) => (
+        </label> */}
+        <h2>Contacts</h2>
+        <ContactsList contacts={this.getContact()} />
+        {/* <ul> */}
+          {/* {visibleContact.map(({ name, number }) => (
             <li key={shortid.generate()}>{name} {number }</li>
-  ))}
-        </ul>
+  ))} */}
+        {/* </ul> */}
       </>
     );
   };
