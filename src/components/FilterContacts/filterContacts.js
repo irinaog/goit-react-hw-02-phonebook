@@ -1,4 +1,7 @@
-export const FilterContacts = ({contact, filter}) => {
+// import PropTypes from 'prop-types';
+
+
+export const FilterContacts = ({ contact, filter }) => {
     return (<>
         
         <label> Find contacts by name

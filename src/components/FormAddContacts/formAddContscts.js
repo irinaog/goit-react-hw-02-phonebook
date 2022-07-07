@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-// import shortid from 'shortid';
+import css from './FormAddContact.module.css'
 
 export class FormAddContacts extends Component{
     state = {
     name: ' ',
     number: ' ',
     }
-
+    
     hendleChange = e => {
     const { name, value } = e.currentTarget;
     // console.log(e.currentTarget.value);
@@ -31,10 +31,11 @@ export class FormAddContacts extends Component{
     render() {
         return (
             <>
-            <form onSubmit={this.hendleSubmit}> 
-          <label>
-            Name
+            <form  className = {css.formAddContact} onSubmit={this.hendleSubmit}> 
+          <label className={css.formInputTitle}>
+            Name 
             <input
+            className={css.formInput}
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -44,9 +45,10 @@ export class FormAddContacts extends Component{
               onChange={this.hendleChange}   
                   />
           </label>
-           <label>
+           <label className={css.formInputTitle}>
             Number
             <input
+            className={css.formInput}
                 type="tel"
                 name="number"
                 pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -57,7 +59,7 @@ export class FormAddContacts extends Component{
             />
           </label>
           
-          <button type="submit">Add contact</button>
+          <button  className ={css.addBtn} type="submit">Add contact</button>
         </form></>
         )
     }

@@ -5,7 +5,6 @@ import { FormAddContacts } from './FormAddContacts/formAddContscts';
 import { ContactsList } from "./ContactsList/contactsList";
 import { FilterContacts } from "./FilterContacts/filterContacts";
 
-
 export class App extends Component {
   contactsId = shortid.generate();
   state = {
@@ -58,6 +57,7 @@ export class App extends Component {
       contact.name !== data.name ? this.state.contacts.push({ name: data.name, number: data.number, id: shortid.generate() }) :
         alert(data.name + 'is already in contacts')
     ))
+    // this.state.contacts.push({ name: data.name, number: data.number, id: shortid.generate() })
       //   if (data.name === contact.name){}
       //   // data.name === contact.name ? alert('is already in contact')
       //   // :this.state.contacts.push({ name: data.name, number: data.number, id: shortid.generate() })
@@ -87,12 +87,18 @@ export class App extends Component {
       contact.name.toLowerCase().includes(normilizedFilter),
     );
   };
+
+  deleteContact = (contactId) => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact=>contact.id!==contactId)
+    }))
+  }
   
   render() {
     // const visibleContact = this.getContact();
     return (
       <>
-         <h1>Phonebook</h1>
+         <h1 className="headlineApp">Phonebook</h1>
         <FormAddContacts onSubmit={this.formSubmitHandler} />
         {/* <form onSubmit={this.hendleSubmit}> 
           <label>
@@ -135,8 +141,11 @@ export class App extends Component {
             onChange={this.changeFilter}  
           ></input>
         </label> */}
-        <h2>Contacts</h2>
-        <ContactsList contacts={this.getContact()} />
+        <h2 className="contactListTitle">Contacts</h2>
+        <ContactsList
+          contacts={this.getContact()}
+          onDeleteContact = {this.deleteContact}
+        />
         {/* <ul> */}
           {/* {visibleContact.map(({ name, number }) => (
             <li key={shortid.generate()}>{name} {number }</li>
