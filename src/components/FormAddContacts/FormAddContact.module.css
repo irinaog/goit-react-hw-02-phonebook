@@ -41,6 +41,7 @@
     border-radius: 2px;
     color:#093028;
     /* transition: background 250ms ease-in-out; */
+    cursor: pointer;
 
 }
 

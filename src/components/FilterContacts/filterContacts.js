@@ -1,17 +1,20 @@
 // import PropTypes from 'prop-types';
+import css from './FilterContacts.module.css';
 
 
 export const FilterContacts = ({ contact, filter }) => {
     return (<>
-        
-        <label> Find contacts by name
-            <input
+        <div className={css.filterContainer}>
+        <label htmlFor='filter' className={css.filterTitle}> Find contacts by name </label>
+        <input
+                id='filter'
+                className={css.filterInput}
                 type="text"
                 name="filter"
                 value={contact}
                 onChange={filter}
             ></input>
-        </label>
+        </div>
     </>
     )
 };
