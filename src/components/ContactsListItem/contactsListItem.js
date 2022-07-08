@@ -1,22 +1,19 @@
-import shortid from "shortid";
+import PropTypes from 'prop-types';
 import css from './ContactListItem.module.css'
 
 export const ContactsListItem = ({ name, number, id, deleteContact }) => {
     return (
     
-        <li className={css.contactItem} key={shortid.generate()}>
+        <li className={css.contactItem} key={id}>
             <p className={css.contactName}>{name} {number} </p>
             <button className={css.deleteBtn} onClick={()=>deleteContact(id)}>Delete</button>
         </li>
     )
 };
 
-// export const ContactsListItem = ({ name, number, onDeleteContact}) => {
-//     return (
-    
-//         <li key={shortid.generate()}>
-//             <p>{name} {number} </p>
-//             <button onClick={()=>onDeleteContact()}>Delete</button>
-//         </li>
-//     )
-// };
+ContactsListItem.propTypes = {
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    deleteContact:PropTypes.func.isRequired,
+}

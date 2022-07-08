@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import css from './FormAddContact.module.css'
+import css from './FormAddContact.module.css';
 
 export class FormAddContacts extends Component{
     state = {
     name: ' ',
     number: ' ',
-    }
+  }
     
     hendleChange = e => {
     const { name, value } = e.currentTarget;

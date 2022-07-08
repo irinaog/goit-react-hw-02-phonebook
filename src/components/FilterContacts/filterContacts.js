@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import css from './FilterContacts.module.css';
 
 
@@ -18,3 +18,8 @@ export const FilterContacts = ({ contact, filter }) => {
     </>
     )
 };
+
+FilterContacts.propTypes = {
+    contact: PropTypes.string.isRequired,
+    filter: PropTypes.func.isRequired,
+}

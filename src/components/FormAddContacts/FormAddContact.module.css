@@ -37,15 +37,19 @@
         
 
     background: linear-gradient(to right, #43c6ac, #f8ffae);
+    background-color: transparent;
     border: none;
     border-radius: 2px;
     color:#093028;
-    /* transition: background 250ms ease-in-out; */
+    transition: background-color 250ms ease-in-out, color 250ms;
     cursor: pointer;
 
 }
 
 .addBtn:hover {
-    background: linear-gradient(to left, #43c6ac, #f8ffae);
+    background: none;
+    background-color: #43c6ac;
+    color: #f8ffae;
+    box-shadow: 0 0 20px 0.5px #f8ffae;
 }
 
