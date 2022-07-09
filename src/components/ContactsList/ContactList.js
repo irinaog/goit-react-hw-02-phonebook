@@ -1,4 +1,4 @@
-import { ContactsListItem } from "components/ContactsListItem/ContactsListItem"
+import { ContactsListItem } from "components/ContactsListItem/ContactListItem"
 import PropTypes from 'prop-types';
 import css from './ContactsList.module.css';
 
@@ -21,15 +21,3 @@ ContactsList.propTypes = {
     })),
     onDeleteContact:PropTypes.func.isRequired,
 }
-
-
-// export const ContactsList = ({contacts, onDeleteContact}) => {
-//     return (
-//         <ul>
-//             {contacts.map(({ name, number, id }) => (
-//                 <ContactsListItem key={shortid.generate()} name={name} number={number} onDeleteContact={onDeleteContact(id)} />
-//             ))}
-            
-//         </ul>
-//     )
-// }
