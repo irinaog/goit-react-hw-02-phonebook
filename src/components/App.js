@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import shortid from 'shortid';
 
-import { FormAddContacts } from "./FormAddContacts/FormAddContacts";
-import { ContactsList } from "./ContactsList/ContactList";
-import { FilterContacts } from "./FilterContacts/FilterContacts";
+// import { FormAddContacts } from "./FormAddContacts/FormAddContacts";
+// import { ContactsList } from "./ContactsList/ContactList";
+// import { FilterContacts } from "./FilterContacts/FilterContacts";
 
 export class App extends Component {
   contactsId = shortid.generate();
@@ -56,7 +56,7 @@ export class App extends Component {
 
     return (
       <>
-        <h1 className="headlineApp">Phonebook</h1>
+        {/* <h1 className="headlineApp">Phonebook</h1>
         
         <FormAddContacts onSubmit={this.formSubmitHandler} />
        
@@ -73,7 +73,7 @@ export class App extends Component {
         />:<ContactsList
           contacts={this.state.contacts}
           onDeleteContact = {this.deleteContact}/>}
-      
+       */}
     
       </>
     );
