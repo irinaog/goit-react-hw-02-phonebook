@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import shortid from 'shortid';
 
-import { FormAddContacts } from './FormAddContacts/FormAddContscts';
+import { FormAddContacts } from "./FormAddContacts/FormAddContscts";
 import { ContactsList } from "./ContactsList/ContactsList";
 import { FilterContacts } from "./FilterContacts/FilterContacts";
 
