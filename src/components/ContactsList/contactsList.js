@@ -1,4 +1,4 @@
-import { ContactsListItem } from "components/ContactsListItem/contactsListItem"
+import { ContactsListItem } from "components/ContactsListItem/ContactsListItem"
 import PropTypes from 'prop-types';
 import css from './ContactsList.module.css';
 

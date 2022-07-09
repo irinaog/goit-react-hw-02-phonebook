@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import shortid from 'shortid';
 
-import { FormAddContacts } from './FormAddContacts/formAddContscts';
-import { ContactsList } from "./ContactsList/contactsList";
-import { FilterContacts } from "./FilterContacts/filterContacts";
+import { FormAddContacts } from './FormAddContacts/FormAddContscts';
+import { ContactsList } from "./ContactsList/ContactsList";
+import { FilterContacts } from "./FilterContacts/FilterContacts";
 
 export class App extends Component {
   contactsId = shortid.generate();
@@ -14,15 +14,18 @@ export class App extends Component {
       {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter: ' ',
+    filter: '',
   };
 
 
-    formSubmitHandler = data => {
+  formSubmitHandler = data => {
     console.log(data);
-      this.state.contacts.map(contact => (
-        data.name === contact.name ? alert(data.name + ' is already in contacts') : this.setState({ contacts: [...this.state.contacts, { name: data.name, number: data.number, id: shortid.generate() }] })
-      ));
+    if (this.state.contacts.find(contact => (data.name === contact.name))){
+      alert(data.name + ' is already in contacts' )
+    }
+    else {
+      this.setState({ contacts: [...this.state.contacts, { name: data.name, number: data.number, id: shortid.generate() }] })
+    }
   };
 
 
@@ -64,7 +67,7 @@ export class App extends Component {
       
         <h2 className="contactListTitle">Contacts</h2>
 
-        {this.state.filter !== ' '?  <ContactsList
+        {this.state.filter !== ''?  <ContactsList
           contacts={this.getFilterListContact()}
           onDeleteContact = {this.deleteContact}
         />:<ContactsList

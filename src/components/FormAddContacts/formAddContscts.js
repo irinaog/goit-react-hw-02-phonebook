@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import css from './FormAddContact.module.css';
 
 export class FormAddContacts extends Component{
     state = {
-    name: ' ',
-    number: ' ',
+    name: '',
+    number: '',
   }
     
     hendleChange = e => {
@@ -25,7 +26,7 @@ export class FormAddContacts extends Component{
     };
     
      reset = () => {
-    this.setState({ name: ' ', number: ' ' })
+    this.setState({ name: '', number: '' })
     };
     
     render() {
@@ -63,4 +64,8 @@ export class FormAddContacts extends Component{
         </form></>
         )
     }
+};
+
+FormAddContacts.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 }
